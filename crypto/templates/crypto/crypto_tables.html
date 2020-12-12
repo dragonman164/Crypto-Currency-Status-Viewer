@@ -1,0 +1,54 @@
+{% extends "crypto/base.html" %}
+
+{% block title %}
+  <title>Crypto Currencies Table</title>
+{% endblock title %}
+
+{% block body %}
+  <body>
+    <div class="typewriter">
+        <div class="typewriter-text" >Table Wise Crytpto Currency Details</div>
+      </div>
+    
+      <div class="typewriter">
+        <div class="typewriter-text" style="font-size:20px" >Latest Data was fetched at: {{time}} UTC</div>
+      </div>
+    
+      <div class="typewriter">
+        <div class="typewriter-text" style="font-size:20px" >Click on the name of the Crypto Currency to know more details.</div>
+      </div>
+
+    <table class="table table-dark table-striped" style="table-layout:fixed; border: 40px solid white;border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col" >Name</th>
+            <th scope="col">Year Established</th>
+            <th scope="col">Country</th>
+            <th scope="col">Normalised Trade Volume</th>
+            <th scope="col">Is Trading Incentive?</th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for elem in Data %}
+ 
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href="/currency_details?name={{elem.name}}" id="name" style="color:white" >{{elem.name}}</a></td>
+                <td>{{elem.year_established}}</td>
+               <td >{{elem.country}}</td>
+                <td>{{elem.trade_volume_24h_btc_normalized}}</td>
+                <td>{{elem.has_trading_incentive}}</td>
+                
+              </tr>
+            {% endfor %}
+        
+        </tbody>
+      </table>
+
+
+  </body>
+{% endblock body %}
+
